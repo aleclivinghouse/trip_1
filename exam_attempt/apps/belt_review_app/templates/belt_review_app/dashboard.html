@@ -1,0 +1,77 @@
+<html>
+<head>
+</head>
+
+<body>
+	<!DOCTYPE html>
+<html>
+<head>
+	<title>Users Index</title>
+</head>
+<body>
+<h3>Below is my public ip</h3>
+<h1>13.56.236.247</h1>
+<a href="/addtrip">Add A Trip</a>
+<a href="/logout">Logout</a>
+<h1>Welcome {{request.session.user_name}}</h1>
+
+<div class="wrapper" style="margin: auto;">
+<h3>Your Trip Schedule</h3>
+<table>
+ <tr>
+	 <td>Destination</td>
+	 <td>Travel Start Date</td>
+	 <td>Travel End Date</td>
+	 <td>Plan</td>
+ </tr>
+ {% for x in users_trip %}
+ <tr>
+   <td><a href="/travels/destination/{{x.destination.id}}">{{x.destination.dest_name}}</a></td>
+	 <td>{{x.destination.start_date}}</td>
+	 <td>{{x.destination.end_date}}</td>
+	  <td>{{x.destination.description}}</td>
+ </tr>
+{% endfor %}
+</table>
+
+<!-- This is the split in between the two tables -->
+
+<h3 style="margin-top: 60px;">Other User's Trip Schedule</h3>
+<table>
+ <tr>
+	 <td>Destination</td>
+	 <td>Travel Start Date</td>
+	 <td>Travel End Date</td>
+	 <td>Plan</td>
+ </tr>
+  {% for x in others_trip %}
+	<tr>
+		<td><a href="/travels/destination/{{x.destination.id}}">{{x.destination.dest_name}}</a></td>
+		<td>{{x.destination.start_date|date:"M d, Y"}}</td>
+		<td>{{x.destination.end_date}}</td>
+		<td>{{x.destination.description}}</td>
+		<td><a href="/adduser/{{x.destination.id}}">Join</a></td>
+	</tr>
+	{% endfor %}
+
+</table>
+</div>
+
+{% for review in reviews %}
+<h3><a href="/books/{{review.book.id}}">{{review.book.title}}</a></h3>
+<p>written by:<a>{{review.book.author}}</a></p>
+<p>posted by: <a href = "/user/{{review.user.id}}">{{review.user.name}}</a></p>
+<p>{{review.text}}</p>
+<p>{{review.rating}}</p>
+<p>{{review.created_at}}</p>
+{% endfor %}
+
+
+
+
+
+</body>
+</html>
+
+</body>
+</html>

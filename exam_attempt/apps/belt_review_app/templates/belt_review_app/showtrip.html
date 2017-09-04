@@ -1,0 +1,28 @@
+
+<html>
+<head>
+	<title>Users Index</title>
+</head>
+<body>
+  <a href="/dashboard">Home</a>
+  <a href="/logout">Logout</a>
+
+
+<h1> {{trip.destination.dest_name}}</h1>
+<h2>Planned_by:  {{trip.destination.planned_by.name}} </h2>
+<h2>Description: {{trip.destination.description}}</h2>
+<h3>Travel Date From: {{trip.destination.start_date}}</h3>
+<h3>Travel Date To: {{trip.destination.end_date}}</h3>
+
+<h2 style="margin-top: 50px;">People Going</h2>
+{% for x in users_going %}
+
+<h4>{{x.user.name}}</h4>
+
+{% endfor %}
+
+</body>
+</html>
+
+</body>
+</html>

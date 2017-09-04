@@ -1,0 +1,36 @@
+<html>
+<head>
+</head>
+<body>
+	<!DOCTYPE html>
+<html>
+<head>
+	<title>Users Index</title>
+</head>
+<body>
+	{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<a href="/dashboard">Home</a>
+<a href="/users/logout">Logout</a>
+<h1>Add a New Book Title and a Review</h1>
+
+
+<form action="/add" method="post">
+	{% csrf_token %}
+Destination: <p><input type="text" name="dest_name"></p>
+Description: <p><textarea name="description"></textarea></p>
+Travel Date From: <p><input type="date" name="start_date"></p>
+Travel Date End: <p><input type="date" name="end_date"></p>
+<p><input type="submit" value="add"</p>
+</form>
+
+</body>
+</html>
+
+</body>
+</html>
